@@ -1,7 +1,7 @@
 
 import Foundation
 
-class BreastCancerVO : Hashable, Identifiable, Decodable, Encodable {
+class BreastCancerVO : Identifiable, Decodable, Encodable {
 
   var id: String = ""
   var age: Int = 0
@@ -125,35 +125,5 @@ class BreastCancerVO : Hashable, Identifiable, Decodable, Encodable {
 	
   func setOutcome(x : String)
 	  { outcome = x }
-	  
-
-  static func == (lhs: BreastCancerVO, rhs: BreastCancerVO) -> Bool
-  { return
-      lhs.id == rhs.id &&
-      lhs.age == rhs.age &&
-      lhs.bmi == rhs.bmi &&
-      lhs.glucose == rhs.glucose &&
-      lhs.insulin == rhs.insulin &&
-      lhs.homa == rhs.homa &&
-      lhs.leptin == rhs.leptin &&
-      lhs.adiponectin == rhs.adiponectin &&
-      lhs.resistin == rhs.resistin &&
-      lhs.mcp == rhs.mcp &&
-      lhs.outcome == rhs.outcome
-  }
-
-  func hash(into hasher: inout Hasher) {
-    hasher.combine(id)
-    hasher.combine(age)
-    hasher.combine(bmi)
-    hasher.combine(glucose)
-    hasher.combine(insulin)
-    hasher.combine(homa)
-    hasher.combine(leptin)
-    hasher.combine(adiponectin)
-    hasher.combine(resistin)
-    hasher.combine(mcp)
-    hasher.combine(outcome)
-  }
-
+	
 }
