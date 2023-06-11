@@ -2,85 +2,6 @@
 import Foundation
 import SwiftUI
 
-/* This code requires OclFile.swift */
-
-func initialiseOclFile()
-{ 
-  //let systemIn = createByPKOclFile(key: "System.in")
-  //let systemOut = createByPKOclFile(key: "System.out")
-  //let systemErr = createByPKOclFile(key: "System.err")
-}
-
-/* This metatype code requires OclType.swift */
-
-func initialiseOclType()
-{ let intOclType = createByPKOclType(key: "int")
-  intOclType.actualMetatype = Int.self
-  let doubleOclType = createByPKOclType(key: "double")
-  doubleOclType.actualMetatype = Double.self
-  let longOclType = createByPKOclType(key: "long")
-  longOclType.actualMetatype = Int64.self
-  let stringOclType = createByPKOclType(key: "String")
-  stringOclType.actualMetatype = String.self
-  let sequenceOclType = createByPKOclType(key: "Sequence")
-  sequenceOclType.actualMetatype = type(of: [])
-  let anyset : Set<AnyHashable> = Set<AnyHashable>()
-  let setOclType = createByPKOclType(key: "Set")
-  setOclType.actualMetatype = type(of: anyset)
-  let mapOclType = createByPKOclType(key: "Map")
-  mapOclType.actualMetatype = type(of: [:])
-  let voidOclType = createByPKOclType(key: "void")
-  voidOclType.actualMetatype = Void.self
-	
-  let breastCancerOclType = createByPKOclType(key: "BreastCancer")
-  breastCancerOclType.actualMetatype = BreastCancer.self
-
-  let breastCancerId = createOclAttribute()
-  	  breastCancerId.name = "id"
-  	  breastCancerId.type = stringOclType
-  	  breastCancerOclType.attributes.append(breastCancerId)
-  let breastCancerAge = createOclAttribute()
-  	  breastCancerAge.name = "age"
-  	  breastCancerAge.type = intOclType
-  	  breastCancerOclType.attributes.append(breastCancerAge)
-  let breastCancerBmi = createOclAttribute()
-  	  breastCancerBmi.name = "bmi"
-  	  breastCancerBmi.type = doubleOclType
-  	  breastCancerOclType.attributes.append(breastCancerBmi)
-  let breastCancerGlucose = createOclAttribute()
-  	  breastCancerGlucose.name = "glucose"
-  	  breastCancerGlucose.type = doubleOclType
-  	  breastCancerOclType.attributes.append(breastCancerGlucose)
-  let breastCancerInsulin = createOclAttribute()
-  	  breastCancerInsulin.name = "insulin"
-  	  breastCancerInsulin.type = doubleOclType
-  	  breastCancerOclType.attributes.append(breastCancerInsulin)
-  let breastCancerHoma = createOclAttribute()
-  	  breastCancerHoma.name = "homa"
-  	  breastCancerHoma.type = doubleOclType
-  	  breastCancerOclType.attributes.append(breastCancerHoma)
-  let breastCancerLeptin = createOclAttribute()
-  	  breastCancerLeptin.name = "leptin"
-  	  breastCancerLeptin.type = doubleOclType
-  	  breastCancerOclType.attributes.append(breastCancerLeptin)
-  let breastCancerAdiponectin = createOclAttribute()
-  	  breastCancerAdiponectin.name = "adiponectin"
-  	  breastCancerAdiponectin.type = doubleOclType
-  	  breastCancerOclType.attributes.append(breastCancerAdiponectin)
-  let breastCancerResistin = createOclAttribute()
-  	  breastCancerResistin.name = "resistin"
-  	  breastCancerResistin.type = doubleOclType
-  	  breastCancerOclType.attributes.append(breastCancerResistin)
-  let breastCancerMcp = createOclAttribute()
-  	  breastCancerMcp.name = "mcp"
-  	  breastCancerMcp.type = doubleOclType
-  	  breastCancerOclType.attributes.append(breastCancerMcp)
-  let breastCancerOutcome = createOclAttribute()
-  	  breastCancerOutcome.name = "outcome"
-  	  breastCancerOutcome.type = stringOclType
-  	  breastCancerOclType.attributes.append(breastCancerOutcome)
-}
-
 func instanceFromJSON(typeName: String, json: String) -> AnyObject?
 	{ let jdata = json.data(using: .utf8)!
 	  let decoder = JSONDecoder()
@@ -104,8 +25,7 @@ class ModelFacade : ObservableObject {
 	static func getInstance() -> ModelFacade { 
 		if instance == nil
 	     { instance = ModelFacade() 
-	       initialiseOclFile()
-	       initialiseOclType() }
+         }
 	    return instance! }
 	                          
 	init() { 
